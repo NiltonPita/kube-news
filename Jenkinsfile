@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage("Build Docker Image") {
             steps {
-                sh "echo 'Construção da Imagem'"
+                script {
+                    dockerapp = docker.build("fabricioveronez/live-kube-news:v1", '-f ./src/Dockerfile ./src')
+                }
             }
         }
 
