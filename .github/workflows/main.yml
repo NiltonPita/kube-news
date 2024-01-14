@@ -6,17 +6,17 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
 jobs:
   CI:
     runs-on: ubuntu-latest
+    
     steps:
     - name: Docker Login
       uses: docker/login-action@v3.0.0
       with:
         username: ${{secrets.DOCKERHUB_USER}}
         password: ${{secrets.DOCKERHUB_PWD}}
-   CD:
+  CD:
     runs-on: ubuntu-latest
     needs: [CI]
 
