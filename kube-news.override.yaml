@@ -1,0 +1,4 @@
+services:
+ kube_news:
+    image: niltonpita/web-kube-news:${KUBE_NEWS_TAG:-latest}
+    

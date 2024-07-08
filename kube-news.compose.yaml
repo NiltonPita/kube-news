@@ -1,0 +1,17 @@
+services:
+ kube_news:
+    image: niltonpita/kube-news:${KUBE_NEWS_TAG:-latest}
+    build:
+      context: ./src 
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - kube_news_net
+    depends_on:
+      - postgre
+    environment:
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_USERNAME: ${POSTGRES_USER}
+      DB_DATABASE: ${POSTGRES_DB}
+      DB_HOST: postgre
